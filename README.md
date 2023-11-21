@@ -22,7 +22,7 @@ Usage example:
          --post-data '{"songs": ["Ride Wit Me", "Sweet Emotion"]}' \
          http://localhost:32174/api/recommend
 
-- Check the "response.out" file generated:
+- Check the "response.out" file generated to see 'playlist_ids', 'version' and 'model_datetime':
 
       $ cat response.out
 
