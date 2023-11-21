@@ -7,3 +7,17 @@ In this project, students will design, implement and  deploy a playlist recommen
 You will obtain experience using some of the most popular tools in this context: [Docker](https://www.docker.com/) to containerize application components, [Kubernetes](https://kubernetes.io/) to orchestrate the deployment in a cloud environment, [GitHub](https://github.com) (or another Git provider) as a central code repository, and [ArgoCD](https://argoproj.github.io/cd/) as the continuous delivery framework on top of Kubernetes.
 
 Students will create a recommendation system to recommend playlists to a user  based on a set of songs that the user listened in the past.
+
+Usage example:
+
+Start the server first:
+
+$ python3 app.py
+
+Then, make the requests with the songs:
+
+$ wget --server-response \
+   --output-document response.out \
+   --header='Content-Type: application/json' \
+   --post-data '{"songs": ["Ride Wit Me", "Sweet Emotion"]}' \
+   http://localhost:32174/api/recommend
