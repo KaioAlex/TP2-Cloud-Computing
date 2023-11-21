@@ -10,14 +10,22 @@ Students will create a recommendation system to recommend playlists to a user  b
 
 Usage example:
 
-Start the server first:
+- Start the server first:
 
-$ python3 app.py
+      $ python3 app.py
 
-Then, make the requests with the songs:
+- Then, make the requests with the songs:
+      
+      $ wget --server-response \
+         --output-document response.out \
+         --header='Content-Type: application/json' \
+         --post-data '{"songs": ["Ride Wit Me", "Sweet Emotion"]}' \
+         http://localhost:32174/api/recommend
 
-$ wget --server-response \
-   --output-document response.out \
-   --header='Content-Type: application/json' \
-   --post-data '{"songs": ["Ride Wit Me", "Sweet Emotion"]}' \
-   http://localhost:32174/api/recommend
+- Check the "response.out" file generated:
+
+      $ cat response.out
+
+- To regenerate the model (trained_model.pickle), modify model.py and run the below command to update "trained_model.pickle":
+
+      $ python3 model.py
