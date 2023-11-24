@@ -55,25 +55,25 @@ def recommend():
     print(f"Top-{N} Recommended Playlists:")
     print(f"{playlists_recommended}\n\n")
 
-    return jsonify({'playlist_ids': playlists_recommended,
-                    'version': trained_model['version'],
-                    'model_date': trained_model['model_date']
-    })
+    return {'playlist_ids': playlists_recommended,
+            'version': trained_model['version'],
+            'model_date': trained_model['model_date']
+    }
 
 def load_model():
   global trained_model
   try:
-    file = open("../trained_model.pickle", "rb")
+    file = open("trained_model.pickle", "rb")
     trained_model = pickle.load(file)
 
     print(f"\nVersion: {trained_model['version']}")
     print(f"Date: {trained_model['model_date']}\n")
 
     file.close()
-  except:
-    print("Could't load trained model!")
+  except Exception as error:
+      print(f"Could't load trained model: {error}")
 
 if __name__ == "__main__":
     load_model()
-    app.run(host="localhost", port=32174, debug=True)
+    app.run(host="0.0.0.0", port=32174, debug=True)
     
