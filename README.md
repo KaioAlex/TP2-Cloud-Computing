@@ -40,7 +40,7 @@ Usage example:
 
 - Test on browser:
 
-      http://0.0.0.0:32174/
+      http://172.17.0.2:32174
 
 - Test via command line (Wget):
 
@@ -48,4 +48,4 @@ Usage example:
          --output-document response.out \
          --header='Content-Type: application/json' \
          --post-data '{"songs": ["Ride Wit Me", "Sweet Emotion"]}' \
-         http://0.0.0.0:32174/api/recommend
+         http://172.17.0.2:32174/api/recommend
