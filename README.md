@@ -29,3 +29,23 @@ Usage example:
 - To regenerate the model (trained_model.pickle), modify model.py and run the below command to update "trained_model.pickle":
 
       $ python3 model.py
+
+- Frontend Container: Docker pull from DockerHub
+  
+      $ docker image pull caioalex/frontcontainer:latest
+  
+- Run the image:
+
+      $ docker run <ID-caioalex/frontcontainer>
+
+- Test on browser:
+
+      http://0.0.0.0:32174/
+
+- Test via command line (Wget):
+
+      $ wget --server-response \
+         --output-document response.out \
+         --header='Content-Type: application/json' \
+         --post-data '{"songs": ["Ride Wit Me", "Sweet Emotion"]}' \
+         http://0.0.0.0:32174/api/recommend
