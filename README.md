@@ -32,7 +32,7 @@ Usage example:
 
 - Frontend Container: Docker pull from DockerHub
   
-      $ docker image pull caioalex/frontcontainer:latest
+      $ docker image pull caioalex/playlists-recommender-front:0.1
   
 - Run the image:
 
