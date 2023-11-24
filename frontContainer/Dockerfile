@@ -143,7 +143,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY app.py .
 
 # Copy the trained_model to the working directory
-COPY ./trained_model.pickle .
+# COPY ./trained_model.pickle .
 
 # Run the app.py code
 CMD ["python", "app.py"]

@@ -9,13 +9,17 @@ from datetime import datetime
 from itertools import groupby
 from operator import itemgetter
 
-reader = csv.DictReader(open("../datasets/2023_spotify_ds1.csv"), delimiter=",")
+import wget
+import os.path
+
+if not os.path.isfile("2023_spotify_ds1.csv"):
+	filename = wget.download("https://github.com/KaioAlex/TP2-Cloud-Computing/raw/main/datasets/2023_spotify_ds1.csv")
+
+reader = csv.DictReader(open("2023_spotify_ds1.csv"), delimiter=",")
 songs_list = []
 
-pids_list = []
 for row in reader:
 	songs_list.append(row)
-	pids_list.append(row['pid'])
 
 data = {}
 # Display songs grouped by pids
