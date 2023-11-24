@@ -36,7 +36,7 @@ Usage example:
   
 - Run the image:
 
-      $ docker run <ID-caioalex/frontcontainer>
+      $ docker run <ID-caioalex/playlists-recommender-front:0.1>
 
 - Test on browser:
 
