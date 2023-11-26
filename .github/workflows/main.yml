@@ -2,7 +2,7 @@ name: Publish Docker Image to Docker Hub
 
 on:
   push:
-    branches: ['dataset_git']
+    branches: ['main']
 
 jobs:
   build:
@@ -17,8 +17,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      # FrontContainer
       - name: Build the Docker image
         run: docker build . --file frontContainer/Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/playlists-recommender-front:0.1
-
+      
       - name: Docker Push
         run: docker push ${{ secrets.DOCKER_USERNAME }}/playlists-recommender-front:0.1
+
+      # MLContainer
+      - name: Build the Docker image 2
+        run: docker build . --file MLContainer/Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/playlists-recommender-ml:0.1
+
+      - name: Docker Push
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/playlists-recommender-ml:0.1
