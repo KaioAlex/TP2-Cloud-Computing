@@ -140,7 +140,7 @@ COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the app.py code to the working directory
-COPY app.py .
+COPY frontContainer/app.py .
 
 # Copy the trained_model to the working directory
 # COPY ./trained_model.pickle .
