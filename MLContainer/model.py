@@ -12,6 +12,8 @@ from operator import itemgetter
 import wget
 import os.path
 
+from github import Github
+
 if not os.path.isfile("training.csv"):
 	filename = wget.download("https://github.com/KaioAlex/TP2-Cloud-Computing/raw/main/datasets/training.csv")
 
@@ -42,7 +44,7 @@ playlist_tfidf_matrix = tfidf_vectorizer.fit_transform(playlists_df['combined_so
 
 version = 0
 try:
-	print(os.getcwd())
+	filename = wget.download("https://github.com/KaioAlex/TP2-Cloud-Computing/raw/main/MLContainer/trained_model.pickle")
 	file = open("./trained_model.pickle", "rb")
 	last_model = pickle.load(file)
 	version = last_model['version'] + 1
@@ -62,6 +64,21 @@ pickle.dump(persist, file)
 file.close()
 
 print("Trained model saved: 'trained_model.pickle'")
+
+# Upload new trained_model.pickle to github
+
+# assign each item to a variable
+token = "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"
+repo_for_upload = "KaioAlex/TP2-Cloud-Computing"
+
+g = Github(token)
+
+repo = g.get_repo(repo_for_upload)
+
+with open("trained_model.pickle", 'rb') as file:
+    data = file.read()
+
+repo.create_file("MLContainer/trained_model.pickle", f"Model Version: {version}", data, branch="main")
 
 if os.path.isfile("training.csv"):
 	os.remove("training.csv")
