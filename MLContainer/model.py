@@ -12,10 +12,10 @@ from operator import itemgetter
 import wget
 import os.path
 
-if not os.path.isfile("2023_spotify_ds1.csv"):
-	filename = wget.download("https://github.com/KaioAlex/TP2-Cloud-Computing/raw/main/datasets/2023_spotify_ds1.csv")
+if not os.path.isfile("training.csv"):
+	filename = wget.download("https://github.com/KaioAlex/TP2-Cloud-Computing/raw/main/datasets/training.csv")
 
-reader = csv.DictReader(open("2023_spotify_ds1.csv"), delimiter=",")
+reader = csv.DictReader(open("training.csv"), delimiter=",")
 songs_list = []
 
 for row in reader:
@@ -42,6 +42,7 @@ playlist_tfidf_matrix = tfidf_vectorizer.fit_transform(playlists_df['combined_so
 
 version = 0
 try:
+	print(os.getcwd())
 	file = open("./trained_model.pickle", "rb")
 	last_model = pickle.load(file)
 	version = last_model['version'] + 1
@@ -61,3 +62,6 @@ pickle.dump(persist, file)
 file.close()
 
 print("Trained model saved: 'trained_model.pickle'")
+
+if os.path.isfile("training.csv"):
+	os.remove("training.csv")

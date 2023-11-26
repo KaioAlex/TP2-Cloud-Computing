@@ -131,7 +131,7 @@ CMD ["python3"]
 FROM python:3.9.18
 
 # Set the working directory
-WORKDIR /app
+#WORKDIR /app
 
 # Copy the requirements.txt file to the working directory
 COPY requirements.txt .
