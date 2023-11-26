@@ -4,6 +4,9 @@ import pickle
 from sklearn.metrics.pairwise import linear_kernel
 import random
 
+import wget
+import os.path
+
 app = Flask(__name__)
 trained_model = None
 project_info = None
@@ -62,7 +65,11 @@ def recommend():
 
 def load_model():
   global trained_model
+  
   try:
+    if not os.path.isfile("trained_model.pickle"):
+	    filename = wget.download("https://github.com/KaioAlex/TP2-Cloud-Computing/raw/main/MLContainer/trained_model.pickle")
+
     file = open("trained_model.pickle", "rb")
     trained_model = pickle.load(file)
 
