@@ -48,6 +48,8 @@ try:
 	file = open("./trained_model.pickle", "rb")
 	last_model = pickle.load(file)
 	version = last_model['version'] + 1
+
+	file.close()
 except:
 	pass
 
@@ -59,22 +61,24 @@ persist = {
 	"model_date": datetime.now().isoformat()
 }
 
+if os.path.isfile("./trained_model.pickle"):
+	os.remove("./trained_model.pickle")
+
 file = open("./trained_model.pickle", "wb")
 pickle.dump(persist, file)
 file.close()
 
-print("Trained model saved: 'trained_model.pickle'")
+print("\n\nTrained model saved: 'trained_model.pickle'")
+
+# Get auth
+g = Github("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")
+repo = g.get_repo("KaioAlex/TP2-Cloud-Computing")
+
+# Delete old trained_mode.pickle from github
+contents = repo.get_contents("MLContainer/trained_model.pickle", ref="main")
+repo.delete_file(contents.path, f"removed model version: {version-1}", contents.sha, branch="main")
 
 # Upload new trained_model.pickle to github
-
-# assign each item to a variable
-token = "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"
-repo_for_upload = "KaioAlex/TP2-Cloud-Computing"
-
-g = Github(token)
-
-repo = g.get_repo(repo_for_upload)
-
 with open("trained_model.pickle", 'rb') as file:
     data = file.read()
 
