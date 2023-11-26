@@ -134,13 +134,13 @@ FROM python:3.9.18
 #WORKDIR /app
 
 # Copy the requirements.txt file to the working directory
-COPY requirements.txt .
+COPY MLContainer/requirements.txt .
 
 # Install the required packages
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the model.py code to the working directory
-COPY model.py .
+COPY MLContainer/model.py .
 
 # Run the model.py code
 CMD ["python", "model.py"]
