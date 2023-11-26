@@ -131,16 +131,16 @@ CMD ["python3"]
 FROM python:3.9.18
 
 # Set the working directory
-WORKDIR /frontContainer
+# WORKDIR /app
 
 # Copy the requirements.txt file to the working directory
-COPY requirements.txt .
+COPY frontContainer/requirements.txt .
 
 # Install the required packages
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the app.py code to the working directory
-COPY app.py .
+COPY frontContainer/app.py .
 
 # Copy the trained_model to the working directory
 # COPY ./trained_model.pickle .
