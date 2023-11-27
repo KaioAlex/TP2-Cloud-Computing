@@ -60,7 +60,8 @@ def recommend():
 
     return {'playlist_ids': playlists_recommended,
             'version': trained_model['version'],
-            'model_date': trained_model['model_date']
+            'model_date': trained_model['model_date'],
+            "project_info": "caio-luis-recommender"
     }
 
 def load_model():
