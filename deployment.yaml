@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: caio-luis-recommender-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: caio-luis-recommender
