@@ -1,0 +1,9 @@
+project: luismonteiro-project
+source:
+  repoURL: 'https://github.com/KaioAlex/TP2-Cloud-Computing'
+  path: .
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: luismonteiro
+syncPolicy:
+  automated: {}
