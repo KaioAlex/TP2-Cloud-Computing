@@ -30,6 +30,10 @@ Usage example:
 
       $ python3 model.py
 
+- Ml Container: Docker pull from DockerHub
+
+      $ docker image pull caioalex/playlists-recommender-ml:0.1
+
 - Frontend Container: Docker pull from DockerHub
   
       $ docker image pull caioalex/playlists-recommender-front:0.1
